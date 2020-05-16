@@ -1,0 +1,12 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+# não é necessário em desenvolvimento (copia para o mesmo diretório)
+# mas em CI/CD é necessário!
+COPY . .
+
+CMD ["npm", "run", "start"]
